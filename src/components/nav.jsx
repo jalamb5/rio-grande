@@ -1,3 +1,5 @@
+import './nav.css';
+
 export default function Navbar() {
   let itemCount = 0
 

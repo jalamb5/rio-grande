@@ -4,6 +4,7 @@ import { createBrowserRouter, RouterProvider } from 'react-router-dom'
 import Root from './routes/root'
 import Cart from './routes/cart'
 import './index.css'
+// import './components/nav.css'
 
 const router = createBrowserRouter([
   {
