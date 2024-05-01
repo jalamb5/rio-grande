@@ -1,16 +1,35 @@
-import Navbar from "../components/nav"
+import { useState, useEffect } from "react";
+import Navbar from "../components/nav";
+import "./root.css";
 
 export default function Root() {
+  const [products, setProducts] = useState([]);
+
+  useEffect(() => {
+    fetch("https://fakestoreapi.com/products")
+      .then((res) => res.json())
+      .then((json) => setProducts(json));
+  }, []);
+
   return (
-  <>
-  <Navbar />
-    <div>
-      <h1>Shop</h1>
-      <p>Shop til you drop!</p>
-    </div>
-    <div>
-      items, items, items, items, items, items, items, items, items, items
-    </div>
-  </>
-  )
+    <>
+      <Navbar />
+      <div id="allProducts">
+        {products.map((product) => (
+          <div key={product.id} className="product">
+            <div className="productImage">
+              <img
+                src={product.image}
+                alt={product.title}
+              />
+            </div>
+            <div className="pricing">
+              <p>${product.price}</p>
+              <button>Add to Cart</button>
+            </div>
+          </div>
+        ))}
+      </div>
+    </>
+  );
 }
