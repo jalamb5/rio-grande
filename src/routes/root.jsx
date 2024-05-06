@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
 import Navbar from "../components/nav";
+import Cart from "./cart";
 import "./root.css";
 
 export default function Root() {
@@ -10,6 +11,11 @@ export default function Root() {
       .then((res) => res.json())
       .then((json) => setProducts(json));
   }, []);
+
+  const addToCart = (product) => {
+    console.log(product);
+    <Navbar product={product} />
+  }
 
   return (
     <>
@@ -25,7 +31,7 @@ export default function Root() {
             </div>
             <div className="pricing">
               <p>${product.price.toFixed(2)}</p>
-              <button>Add to Cart</button>
+              <button onClick={() => addToCart(product)}>Add to Cart</button>
             </div>
           </div>
         ))}
