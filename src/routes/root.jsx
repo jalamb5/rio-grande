@@ -24,7 +24,7 @@ export default function Root() {
               />
             </div>
             <div className="pricing">
-              <p>${product.price}</p>
+              <p>${product.price.toFixed(2)}</p>
               <button>Add to Cart</button>
             </div>
           </div>
