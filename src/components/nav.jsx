@@ -1,17 +1,17 @@
-import './nav.css';
+import "./nav.css";
+import { Link } from "react-router-dom";
 
-export default function Navbar() {
-  let itemCount = 0
+export default function Navbar({ cart }) {
+  let itemCount = cart.length;
 
   return (
     <header>
       <h1>
-        <a href="/">Home</a>
+        <Link to="/">Home</Link>
       </h1>
-      <a href="/cart">
+      <Link to="/cart">
         <button>Cart ({itemCount})</button>
-      </a>
+      </Link>
     </header>
-  )
+  );
 }
-

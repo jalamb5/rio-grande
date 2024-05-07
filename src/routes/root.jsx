@@ -1,33 +1,15 @@
-import { useState, useEffect } from "react";
 import Navbar from "../components/nav";
-import Cart from "./cart";
 import "./root.css";
 
-export default function Root() {
-  const [products, setProducts] = useState([]);
-
-  useEffect(() => {
-    fetch("https://fakestoreapi.com/products")
-      .then((res) => res.json())
-      .then((json) => setProducts(json));
-  }, []);
-
-  const addToCart = (product) => {
-    console.log(product);
-    <Navbar product={product} />
-  }
-
+export default function Root({ products, addToCart, cart }) {
   return (
     <>
-      <Navbar />
+      <Navbar cart={cart} />
       <div id="allProducts">
         {products.map((product) => (
           <div key={product.id} className="product">
             <div className="productImage">
-              <img
-                src={product.image}
-                alt={product.title}
-              />
+              <img src={product.image} alt={product.title} />
             </div>
             <div className="pricing">
               <p>${product.price.toFixed(2)}</p>
