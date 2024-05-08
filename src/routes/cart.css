@@ -1,0 +1,17 @@
+.cartContents {
+  display: grid;
+  grid-template-columns: 3fr, 1fr;
+  padding: 1rem;
+}
+
+.cartItem {
+  display: grid;
+  grid-column: 1;
+  grid-template-columns: repeat(auto-fill, minmax(125px, 1fr));
+  gap: 1rem;
+  padding-bottom: 1.5rem;
+}
+
+.checkout {
+  grid-column: 2;
+}
