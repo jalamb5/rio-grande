@@ -14,8 +14,15 @@ export default function App() {
   }, []);
 
   const addToCart = (item) => {
-    setCart([...cart, item]);
+    if (cart.includes(item)) {
+      cart.find((element) => element === item).quantity++;
+      setCart([...cart]);
+    } else {
+      item.quantity = 1;
+      setCart([...cart, item]);
+    }
   };
+
 
   const router = createBrowserRouter([
     {

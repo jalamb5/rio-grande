@@ -10,7 +10,7 @@ export default function Cart({ cart }) {
 
   const cartSum = (items) => {
     return items.reduce((sum, item) => sum + item.price, 0);
-  }
+  };
 
   return (
     <>
@@ -18,9 +18,10 @@ export default function Cart({ cart }) {
       <p>Cart</p>
       <div className="cartContents">
         {items.map((item) => (
-          <div key={item.id} className="cartItem">
+          <div key={item.id} id={item.id} className="cartItem">
             <img src={item.image} alt={item.title} />
             <p>{item.title}</p>
+            <p>Quantity: {item.quantity}</p>
             <p>${item.price.toFixed(2)}</p>
           </div>
         ))}
