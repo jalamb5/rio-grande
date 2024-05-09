@@ -1,13 +1,6 @@
-import { useState } from "react";
 import Navbar from "../components/nav";
 import "./cart.css";
-export default function Cart({ cart }) {
-  const [items, setItems] = useState(cart);
-
-  const updateCard = (product) => {
-    setItems([...items, product]);
-  };
-
+export default function Cart({ cart, updateCart }) {
   const cartSum = (items) => {
     return items.reduce((sum, item) => sum + (item.price * item.quantity), 0);
   };
@@ -15,18 +8,23 @@ export default function Cart({ cart }) {
   return (
     <>
       <Navbar cart={cart} />
-      <p>Cart</p>
       <div className="cartContents">
-        {items.map((item) => (
+        {cart.map((item) => (
           <div key={item.id} id={item.id} className="cartItem">
             <img src={item.image} alt={item.title} />
             <p>{item.title}</p>
-            <p>Quantity: {item.quantity}</p>
-            <p>${item.price.toFixed(2)}</p>
+            <div className="pricing">
+              <p>Quantity: {item.quantity}</p>
+              <div className="adjustButtons">
+                <button onClick={() => updateCart(item, "remove")}>-</button>
+                <button onClick={() => updateCart(item, "add")}>+</button>
+              </div>
+              <p>${item.price.toFixed(2)} each</p>
+            </div>
           </div>
         ))}
         <div className="checkout">
-          <p>Total: ${cartSum(items).toFixed(2)}</p>
+          <p>Total: ${cartSum(cart).toFixed(2)}</p>
           <button>Checkout</button>
         </div>
       </div>

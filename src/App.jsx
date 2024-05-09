@@ -23,6 +23,30 @@ export default function App() {
     }
   };
 
+  // Find item in cart, return it and the cart without the item
+  const findItem = (product) => {
+    let changedItem = product;
+    let newItems = cart;
+    for (let i = 0; i < cart.length; i++) {
+      if (cart[i].id === product.id) {
+        changedItem = cart[i];
+        newItems = cart.splice(i, 1);
+      }
+      return [newItems, changedItem];
+    }
+  };
+
+  const updateCart = (product, action) => {
+    const [newItems, changedItem] = findItem(product);
+    changedItem.quantity = action === "add" ? changedItem.quantity + 1 : changedItem.quantity - 1;
+
+    // only re-add item if quantity is positive
+    if (changedItem.quantity > 0) { newItems.push(changedItem); }
+
+    let unique = [...new Set(newItems)];
+
+    setCart(unique);
+  };
 
   const router = createBrowserRouter([
     {
@@ -31,7 +55,7 @@ export default function App() {
     },
     {
       path: '/cart',
-      element: <Cart cart={cart}/>,
+      element: <Cart cart={cart} updateCart={updateCart}/>,
     }
   ]);
 
