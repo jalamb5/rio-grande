@@ -7,6 +7,7 @@ export default function App() {
   const [products, setProducts] = useState([]);
   const [cart, setCart] = useState([]);
 
+  // Fetch products from API
   useEffect(() => {
     fetch("https://fakestoreapi.com/products")
       .then((res) => res.json())
@@ -25,15 +26,15 @@ export default function App() {
 
   // Find item in cart, return it and the cart without the item
   const findItem = (product) => {
-    let changedItem = product;
+    let changedItem = null;
     let newItems = cart;
     for (let i = 0; i < cart.length; i++) {
       if (cart[i].id === product.id) {
         changedItem = cart[i];
-        newItems = cart.splice(i, 1);
+        newItems = [...cart.slice(0, i), ...cart.slice(i + 1)];
       }
-      return [newItems, changedItem];
     }
+    return [newItems, changedItem];
   };
 
   const updateCart = (product, action) => {
