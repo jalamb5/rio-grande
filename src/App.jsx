@@ -1,7 +1,7 @@
-import React, { useState, useEffect } from 'react';
-import { createBrowserRouter, RouterProvider } from 'react-router-dom';
-import Root from './routes/root';
-import Cart from './routes/cart';
+import React, { useState, useEffect } from "react";
+import { createBrowserRouter, RouterProvider } from "react-router-dom";
+import Root from "./routes/root";
+import Cart from "./routes/cart";
 
 export default function App() {
   const [products, setProducts] = useState([]);
@@ -27,22 +27,27 @@ export default function App() {
   // Find item in cart, return it and the cart without the item
   const findItem = (product) => {
     let changedItem = null;
+    let index = 0;
     let newItems = cart;
     for (let i = 0; i < cart.length; i++) {
       if (cart[i].id === product.id) {
         changedItem = cart[i];
+        index = i;
         newItems = [...cart.slice(0, i), ...cart.slice(i + 1)];
       }
     }
-    return [newItems, changedItem];
+    return [newItems, changedItem, index];
   };
 
   const updateCart = (product, action) => {
-    const [newItems, changedItem] = findItem(product);
-    changedItem.quantity = action === "add" ? changedItem.quantity + 1 : changedItem.quantity - 1;
+    const [newItems, changedItem, index] = findItem(product);
+    changedItem.quantity =
+      action === "add" ? changedItem.quantity + 1 : changedItem.quantity - 1;
 
     // only re-add item if quantity is positive
-    if (changedItem.quantity > 0) { newItems.push(changedItem); }
+    if (changedItem.quantity > 0) {
+      newItems.splice(index, 0, changedItem);
+    }
 
     let unique = [...new Set(newItems)];
 
@@ -51,13 +56,13 @@ export default function App() {
 
   const router = createBrowserRouter([
     {
-      path: '/',
-      element: <Root products={products} addToCart={addToCart} cart={cart}/>
+      path: "/",
+      element: <Root products={products} addToCart={addToCart} cart={cart} />,
     },
     {
-      path: '/cart',
-      element: <Cart cart={cart} updateCart={updateCart}/>,
-    }
+      path: "/cart",
+      element: <Cart cart={cart} updateCart={updateCart} />,
+    },
   ]);
 
   return (
