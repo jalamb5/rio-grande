@@ -7,10 +7,10 @@ export default function Navbar({ cart }) {
   return (
     <header>
       <h1>
-        <Link to="/">Home</Link>
+        <Link to="/">Rio Grande</Link>
       </h1>
       <Link to="/cart">
-        <button>Cart ({itemCount})</button>
+        <button id="cart">Cart ({itemCount})</button>
       </Link>
     </header>
   );

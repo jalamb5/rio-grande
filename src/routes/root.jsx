@@ -13,7 +13,7 @@ export default function Root({ products, addToCart, cart }) {
             </div>
             <div className="pricing">
               <p>${product.price.toFixed(2)}</p>
-              <button onClick={() => addToCart(product)}>Add to Cart</button>
+              <button className="addToCart" onClick={() => addToCart(product)}>Add to Cart</button>
             </div>
           </div>
         ))}

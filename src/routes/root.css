@@ -16,6 +16,7 @@ img {
   border-radius: 10px;
   box-shadow: inset 0 0 2px 1px rgb(0 0 0 / 10%);
   padding: 1rem;
+  background-color: white;
 }
 
 .productImage {
@@ -27,6 +28,27 @@ img {
 }
 
 .pricing {
-  display: flex;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
   justify-content: space-between;
+  font-size: small;
+  color: #3D405B;
+}
+
+
+.addToCart {
+  border-radius: 8px;
+  border: 1px solid transparent;
+  font-weight: 500;
+  font-family: inherit;
+  background-color: rgba(129, 178, 154, 0.25);
+  cursor: pointer;
+  transition: border-color 0.25s;
+}
+.addToCart:hover {
+  border-color: #646cff;
+}
+.addToCart:focus,
+.addToCart:focus-visible {
+  outline: 4px auto -webkit-focus-ring-color;
 }
