@@ -29,3 +29,32 @@
   flex-direction: column;
   align-items: center;
 }
+
+#checkoutBtn {
+  border-radius: 8px;
+  border: 1px solid transparent;
+  padding: 0.6em 1.2em;
+  background-color: rgba(129, 178, 154, 0.25);
+}
+
+#checkoutBtn:hover {
+  border-color: rgba(129, 178, 154, 0.5);;
+}
+
+.adjustButtons {
+  display: grid;
+  align-items: center;
+  grid-template-columns: 1fr 1fr;
+  gap: .4rem;
+}
+
+.add, .remove {
+  border: none;
+  border-radius: 50%;
+  padding: .15rem;
+  font-size: large;
+}
+
+.add:hover, .remove:hover {
+  background-color: rgba(129, 178, 154, 0.25);
+}
