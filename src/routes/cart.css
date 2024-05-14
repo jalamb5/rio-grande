@@ -23,6 +23,8 @@
 }
 
 .checkout {
+  padding-left: 2rem;
+  padding-right: 2rem;
   grid-column: 2;
   grid-row: 1;
   display: flex;
