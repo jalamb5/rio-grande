@@ -17,4 +17,5 @@ Built with React & React Router.
 ## Attributions
 - Fakestore API: https://fakestoreapi.com/
 - Color Palette: https://coolors.co/palette/f4f1de-e07a5f-3d405b-81b29a-f2cc8f
+- Favicon Generator: https://favicon.io/favicon-generator/
 
