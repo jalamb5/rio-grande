@@ -1,8 +1,16 @@
-# React + Vite
+# Rio Grande
+A concept shopping page.
+Built with React & React Router.
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+![Rio Grande Screenshot](./src/assets/rio_grande.png)
 
-Currently, two official plugins are available:
+## Functionality
+- Pulls items from Fakestore
+- Clicking add to cart multiple times increases quantity
+- Cart count updates in Nav bar
+- Nav bar consistent across root and cart pages
+- Adjust quantities in cart
+- Checkout message
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## Attributions
+- Fakestore API: https://fakestoreapi.com/
